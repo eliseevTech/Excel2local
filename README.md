@@ -1,13 +1,10 @@
 # Excel2local
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/excel2local`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Hey! You want to EASY manage your localise?
+Correct and change the location in Excel. Send it for transfer to outsourcing. Save time, spend it on yourself.
 
 ## Installation
 
 Add this line to your application's Gemfile:
-
 ```ruby
 gem 'excel2local'
 ```
@@ -20,19 +17,29 @@ Or install it yourself as:
 
     $ gem install excel2local
 
-## Usage
+## Usage if rails
+Correct file localises.xlsx and place it to yiur your_rails_app/config/locales/
+and type command in config.ru (for make localises file befoure start rails) or there where you want to make locales
+```ruby
+Excel2local::localize! './config/locales/locales.xlsx','./config/locales'
+```
 
-TODO: Write usage instructions here
+## Usage if not rails
+require gem if not rails
+```ruby
+require 'excel2local' 
+ 
+Excel2local::localize! '****.xlsx','locales path'
+```
+
 
 ## Development
+gem uses beautiful gem - "roo"  --> https://github.com/roo-rb/roo
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/excel2local.
+Bug reports and pull requests are welcome on GitHub at https://github.com/eliseevTech/excel2local or eliseevmail@ya.ru
 
 ## License
 
