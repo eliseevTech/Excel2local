@@ -17,14 +17,14 @@ module Excel2local
       else
         row.each_with_index { |col, col_index|    #если не первая строка
           @simbol = col if col_index == 0    #если 
-          break if @simbol == nil    #
-          if (col_index != 0)
-            @simbol.split(".").each_with_index { | simbol, index |
+          #break if   #
+          if (col_index != 0) and (@simbol != nil ) and (col != nil)
+            @simbol.to_s.split(".").each_with_index { | simbol, index |
               simbol = "\'" + simbol + "\'" if [ "true", "false", "on", "off", "yes", "no" ].member?(simbol)
               if simbol != simbol_memory[col_index][index]  then
-                File.open("#{save_place}/#{yml_file[col_index]}.yml", "a") { |file| file.print "  "*(index+1) + "#{simbol}:"   }  if @simbol.split(".").length - 1 == index
-                File.open("#{save_place}/#{yml_file[col_index]}.yml", "a") { |file| file.puts "  "*(index+1) + "#{simbol}:"  }  if @simbol.split(".").length - 1 != index
-                index.upto(@simbol.split(".").length ) { |n| simbol_memory[col_index].delete_at(n)}
+                File.open("#{save_place}/#{yml_file[col_index]}.yml", "a") { |file| file.print "  "*(index+1) + "#{simbol}:"   }  if @simbol.to_s.split(".").length - 1 == index
+                File.open("#{save_place}/#{yml_file[col_index]}.yml", "a") { |file| file.puts "  "*(index+1) + "#{simbol}:"  }  if @simbol.to_s.split(".").length - 1 != index
+                index.upto(@simbol.to_s.split(".").length ) { |n| simbol_memory[col_index].delete_at(n)}
               end
               simbol_memory[col_index][index] = simbol 
             }
