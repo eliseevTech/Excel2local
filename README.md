@@ -20,18 +20,32 @@ Or install it yourself as:
 ## Usage if rails
 Correct file localises.xlsx and place it to yiur your_rails_app/config/locales/
 and type command in config.ru (for make localises file befoure every start rails) or there where you want to make locales
+
+for one excel file
 ```ruby
 Excel2local::localize! './config/locales/locales.xlsx','./config/locales'
 ```
-notice: old locales files will be deleted
+or for all files in folder 
+```ruby
+Excel2local::localize_all! './config/locales'
+```
+
+notice: old locales files will be deleted!!!
 
 ## Usage if not rails
 require gem if not rails
 ```ruby
 require 'excel2local' 
- 
+```
+for one file
+```ruby
 Excel2local::localize! '****.xlsx','locales path'
 ```
+for all files
+```ruby
+Excel2local::localize_all! 'locales path'
+```
+
 
 ## Correct localises.xlsx or other *.xlsx
 Such Excel configuration = 3 files of locales: en.yml, ru.yml,ru_fan.yml
@@ -45,7 +59,7 @@ head.info.connect | connect to server | соединение | контакт  |
 head.true.test | test | тест | эй бро | 
 
 
-en.yml 
+#{filename}_en.yml 
 ```ruby
 en:
   hello:  'hello'
@@ -57,7 +71,7 @@ en:
     'true':
       test:  'test'
 ```
-ru.yml
+#{filename}_ru.yml
 ```ruby
 ru:
   hello:  'привет'
@@ -69,7 +83,7 @@ ru:
     'true':
       test:  'тест'
 ```
-ru_fun 
+#{filename}_ru_fun 
 ```ruby
 ru_fun:
   hello:  'приувет'
