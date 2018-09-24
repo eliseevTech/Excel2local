@@ -2,7 +2,7 @@
 
 # add gem to the gemfile
 # gem "excel2local", '~> 0.1.3' to 
-require "Excel2local" 
+require "./excel2local" 
 
 # add next for localize only one file './config/locales/locales.xlsx' to './config/locales'
 #Excel2local::localize! './config/locales/locales.xlsx','./config/locales'

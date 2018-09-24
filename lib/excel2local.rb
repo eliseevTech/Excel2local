@@ -4,6 +4,7 @@ require "roo"
 module Excel2local
   
   def self.localize_all! (locate)
+    backup_all! locate
     Dir["#{locate}/*.xlsx"].each { |file| 
       localize! "#{file}","#{locate}"
     }
@@ -40,5 +41,19 @@ module Excel2local
         }
       end
     }
+  end
+
+  def self.backup_all! (locate)
+    if (Dir["#{locate}/*.yml"][0] != nil) then
+      print "Excel2local::backup_all!   to #{locate}/backups .. "
+      Dir.mkdir("#{locate}/backups") if File.directory?("#{locate}/backups") == false
+      Dir.mkdir(dir_name = "#{locate}/backups/#{Time.now.to_i}") 
+      Dir["#{locate}/*.yml"].each { |file|
+        FileUtils.cp(file, dir_name)
+      }
+      puts "Done!"
+    else
+      puts "nothing to backup"
+    end
   end
 end
