@@ -4,8 +4,8 @@ require "roo"
 module Excel2local
   
   def self.localize_all! (locate)
-    backup_all! locate
-    Dir["#{locate}/*.xlsx"].each { |file| 
+    backup_all! locate # делаем бекапп 
+    Dir["#{locate}/*.xlsx"].each { |file|  
       localize! "#{file}","#{locate}"
     }
   end
@@ -25,8 +25,7 @@ module Excel2local
       else
         row.each_with_index { |col, col_index|    #если не первая строка
           @simbol = col if col_index == 0    #если 
-          #break if   #
-          if (col_index != 0) and (@simbol != nil ) and (col != nil)
+          if (col_index != 0) and (@simbol != nil ) and (col != nil) 
             @simbol.to_s.split(".").each_with_index { | simbol, index |
               simbol = "\'" + simbol + "\'" if [ "true", "false", "on", "off", "yes", "no" ].member?(simbol)
               if simbol != simbol_memory[col_index][index]  then
@@ -44,12 +43,12 @@ module Excel2local
   end
 
   def self.backup_all! (locate)
-    if (Dir["#{locate}/*.yml"][0] != nil) then
-      print "Excel2local::backup_all!   to #{locate}/backups .. "
-      Dir.mkdir("#{locate}/backups") if File.directory?("#{locate}/backups") == false
-      Dir.mkdir(dir_name = "#{locate}/backups/#{Time.now.to_i}") 
-      Dir["#{locate}/*.yml"].each { |file|
-        FileUtils.cp(file, dir_name)
+    if (Dir["#{locate}/*.yml"][0] != nil) then   # проверяем есть ла файлы для бекапа
+      print "Excel2local::backup_all!   to #{locate}/backups .. "    
+      Dir.mkdir("#{locate}/backups") if File.directory?("#{locate}/backups") == false  #  проверяем есть папка бекап, если нет создаем
+      Dir.mkdir(dir_name = "#{locate}/backups/#{Time.now.to_i}") # создаем папку для конкретного бекапа
+      Dir["#{locate}/*.yml"].each { |file| 
+        FileUtils.cp(file, dir_name)  #копируем файл
       }
       puts "Done!"
     else
