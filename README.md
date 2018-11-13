@@ -53,7 +53,6 @@ Such Excel configuration = 3 files of locales: en.yml, ru.yml,ru_fan.yml
 --- | en | ru | ru_fun |  
 --- | --- | --- | --- |  
 hello | hello | привет | приувет |
-hello.world | hello world | привет мир | YO! | 
 head.info.true | true | правда | тру | 
 head.info.connect | connect to server | соединение | контакт  | 
 head.true.test | test | тест | эй бро | 
@@ -63,7 +62,6 @@ head.true.test | test | тест | эй бро |
 ```ruby
 en:
   hello:  'hello'
-    world:  'hello world'
   head:
     info:
       'true':  'true'
@@ -75,7 +73,6 @@ en:
 ```ruby
 ru:
   hello:  'привет'
-    world:  'привет мир'
   head:
     info:
       'true':  'правда'
@@ -87,7 +84,6 @@ ru:
 ```ruby
 ru_fun:
   hello:  'приувет'
-    world:  'YO!'
   head:
     info:
       'true':  'тру'
@@ -95,6 +91,7 @@ ru_fun:
     'true':
       test:  'эй бро'
 ```
+
 
 You see, that the specific is correctly processed (true = 'true')
 and for example
