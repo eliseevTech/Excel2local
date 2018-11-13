@@ -35,7 +35,7 @@ module Excel2local
               end
               simbol_memory[col_index][index] = simbol 
             }
-            File.open("#{save_place}/#{File.basename(excel_file, ".xlsx")}_#{yml_file[col_index]}.yml", "a") { |file| file.puts "  \'#{col}\'"  }  # пишем сам символ
+            File.open("#{save_place}/#{File.basename(excel_file, ".xlsx")}_#{yml_file[col_index]}.yml", "a") { |file| file.puts "  \"#{col}\""  }  # пишем сам символ
           end
         }
       end
